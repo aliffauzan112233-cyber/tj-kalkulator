@@ -26,7 +26,11 @@ const pool = new Pool({
 const db = drizzle(pool);
 
 /* ================= ROUTES ================= */
+const path = require("path");
 
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 // SAVE DATA
 app.post("/save", async (req, res) => {
   const { expression, result } = req.body;
